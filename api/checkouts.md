@@ -37,7 +37,7 @@ POST /api/checkouts
 
 ```
 {
-	"items": ["5d422db239f8910d495aee65"],
+    "items": ["5d422db239f8910d495aee65"],
     "out": "2019-08-01T00:00:00.000Z",
     "return": "2019-08-31T00:00:00.000Z",
     "status": "pending",
