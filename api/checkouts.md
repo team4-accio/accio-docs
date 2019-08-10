@@ -4,11 +4,11 @@
 
 ### Endpoints
 
-* [`POST /api/items`](#create-a-checkout)
-* [`GET /api/items/:_id`](#retrieve-a-checkout)
-* [`PATCH /api/items/_id`](#update-a-checkout)
-* [`DELETE /api/items/_id`](#delete-a-checkout)
-* [`GET /api/items`](#list-all-checkouts)
+* [`POST /api/checkouts`](#create-a-checkout)
+* [`GET /api/checkouts/:_id`](#retrieve-a-checkout)
+* [`PATCH /api/checkouts/_id`](#update-a-checkout)
+* [`DELETE /api/checkouts/_id`](#delete-a-checkout)
+* [`GET /api/checkouts`](#list-all-checkouts)
 
 ### Create a checkout
 

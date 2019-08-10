@@ -60,19 +60,19 @@ Response:
 {
     "description": "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
     "tags": [
-        "laptop",
-        "macbook",
-        "apple",
-        "new"
-    ],
-    "_id": "5d422db239f8910d495aee65",
+            "laptop",
+            "macbook",
+            "apple",
+            "new"
+        ],
+    "_id": "5d4cc8708149620a29e73050",
     "available": true,
     "category": "Laptop - Mac",
     "condition": "new",
     "name": "MacBook Pro 13",
-    "sn": "123456789",
-    "createdAt": "2019-08-01T00:09:22.552Z",
-    "updatedAt": "2019-08-01T00:09:22.552Z",
+    "sn": "1234567890",
+    "createdAt": "2019-08-09T01:12:16.246Z",
+    "updatedAt": "2019-08-09T01:12:16.246Z",
     "__v": 0
 }
 ```
@@ -95,19 +95,19 @@ Response:
 {
     "description": "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
     "tags": [
-        "laptop",
-        "macbook",
-        "apple",
-        "new"
-    ],
-    "_id": "5d422db239f8910d495aee65",
+            "laptop",
+            "macbook",
+            "apple",
+            "new"
+        ],
+    "_id": "5d4cc8708149620a29e73050",
     "available": true,
     "category": "Laptop - Mac",
     "condition": "new",
     "name": "MacBook Pro 13",
-    "sn": "123456789",
-    "createdAt": "2019-08-01T00:09:22.552Z",
-    "updatedAt": "2019-08-01T00:09:22.552Z",
+    "sn": "1234567890",
+    "createdAt": "2019-08-09T01:12:16.246Z",
+    "updatedAt": "2019-08-09T01:12:16.246Z",
     "__v": 0
 }
 ```
@@ -149,7 +149,7 @@ PATCH /api/items/:_id
 
 ```
 {
-	"status": "inactive"
+	"available": false
 }
 ```
 
@@ -157,17 +157,21 @@ Response:
 
 ```
 {
-    "checkout": [],
-    "session": null,
-    "_id": "5d41b7e4ac06494b7b7a9d82",
-    "email": "jlouie@gmail.com",
-    "name": "Justin Louie",
-    "password": "password",
-    "role": "admin",
-    "salt": "123",
-    "status": "inactive",
-    "createdAt": "2019-07-31T15:46:44.009Z",
-    "updatedAt": "2019-07-31T15:47:41.679Z",
+    "description": "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
+    "tags": [
+            "laptop",
+            "macbook",
+            "apple",
+            "new"
+        ],
+    "_id": "5d4cc8708149620a29e73050",
+    "available": false,
+    "category": "Laptop - Mac",
+    "condition": "new",
+    "name": "MacBook Pro 13",
+    "sn": "1234567890",
+    "createdAt": "2019-08-09T01:12:16.246Z",
+    "updatedAt": "2019-08-10T13:17:13.104Z",
     "__v": 0
 }
 ```
@@ -233,19 +237,19 @@ Response:
     {
         "description": "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
         "tags": [
-            "laptop",
-            "macbook",
-            "apple",
-            "new"
-        ],
-        "_id": "5d422db239f8910d495aee65",
+                "laptop",
+                "macbook",
+                "apple",
+                "new"
+            ],
+        "_id": "5d4cc8708149620a29e73050",
         "available": true,
         "category": "Laptop - Mac",
         "condition": "new",
         "name": "MacBook Pro 13",
-        "sn": "123456789",
-        "createdAt": "2019-08-01T00:09:22.552Z",
-        "updatedAt": "2019-08-01T00:09:22.552Z",
+        "sn": "1234567890",
+        "createdAt": "2019-08-09T01:12:16.246Z",
+        "updatedAt": "2019-08-09T01:12:16.246Z",
         "__v": 0
     },
     {...},
