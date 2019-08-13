@@ -31,18 +31,21 @@ Arguments
   * type: string (id)
   * *required*
 
-``` 
-POST /api/checkouts
-```
-
-```
-{
-    "items": ["5d422db239f8910d495aee65"],
-    "out": "2019-08-01T00:00:00.000Z",
-    "return": "2019-08-31T00:00:00.000Z",
-    "status": "pending",
-    "user": "5d422915501c450bd4230aac"
-}
+```js
+axios.post("/api/checkouts",
+    {
+        items: ["5d422db239f8910d495aee65"],
+        out: "2019-08-01T00:00:00.000Z",
+        return: "2019-08-31T00:00:00.000Z",
+        status: "pending",
+        user: "5d422915501c450bd4230aac"
+    },
+    {
+        headers: {
+            authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+        }
+    }
+).then(function () {...});
 ```
 
 Response:
@@ -90,8 +93,12 @@ Arguments
   * type: string (id)
   * *required*
   
-```
-GET /api/checkouts/:_id
+```js
+axios.get("/api/checkouts/5d4236831c6f3b11c9783d63", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -155,14 +162,12 @@ Arguments
   * type: string (id)
   * *optional*
 
-```
-PATCH /api/checkouts/:_id
-```
-
-```
-{
-    "status": "approved"
-}
+```js
+axios.patch("/api/checkouts/5d4236831c6f3b11c9783d63", { status: approved }, {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -210,8 +215,12 @@ Arguments
   * type: string (id)
   * *required*
 
-```
-DELETE /api/checkouts/:_id
+```js
+axios.delete("/api/checkouts/5d4236831c6f3b11c9783d63", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -245,8 +254,15 @@ Arguments
   * type: string (id)
   * *optional*
 
-```
-GET /api/checkouts
+```js
+axios.get("/api/checkouts", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    },
+    params: {
+        status: "approved"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -279,10 +295,10 @@ Response:
         "_id": "5d4236831c6f3b11c9783d63",
         "out": "2019-08-01T00:00:00.000Z",
         "return": "2019-08-31T00:00:00.000Z",
-        "status": "pending",
+        "status": "approved",
         "user": "5d422915501c450bd4230aac",
         "createdAt": "2019-08-01T00:46:59.754Z",
-        "updatedAt": "2019-08-01T00:46:59.754Z",
+        "updatedAt": "2019-08-01T00:51:14.817Z",
         "__v": 0
     },
     {...},

@@ -4,11 +4,11 @@
 
 ### Endpoints
 
-* [`POST /api/users`](#create-an-item)
-* [`GET /api/users/:_id`](#retrieve-an-item)
-* [`PATCH /api/users/_id`](#update-an-item)
-* [`DELETE /api/users/_id`](#delete-an-item)
-* [`GET /api/users`](#list-all-items)
+* [`POST /api/items`](#create-an-item)
+* [`GET /api/items/:_id`](#retrieve-an-item)
+* [`PATCH /api/items/_id`](#update-an-item)
+* [`DELETE /api/items/_id`](#delete-an-item)
+* [`GET /api/items`](#list-all-items)
 
 ### Create an item
 
@@ -38,20 +38,23 @@ Arguments
   * type: list
   * *optional*
 
-``` 
-POST /api/items
-```
-
-```
-{
-	"available": true,
-	"category": "Laptop - Mac",
-	"condition": "new",
-	"description": "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
-	"name": "MacBook Pro 13",
-	"sn": "123456789",
-	"tags": ["laptop", "macbook", "apple", "new"]
-}
+```js
+axios.post("/api/items",
+    {
+        available: true,
+	    category: "Laptop - Mac",
+	    condition: "new",
+	    description: "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
+	    name: "MacBook Pro 13",
+	    sn: "123456789",
+	    tags: ["laptop", "macbook", "apple", "new"]
+    },
+    {
+        headers: {
+            authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+        }
+    }
+).then(function () {...});
 ```
 
 Response:
@@ -59,20 +62,15 @@ Response:
 ```
 {
     "description": "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
-    "tags": [
-            "laptop",
-            "macbook",
-            "apple",
-            "new"
-        ],
-    "_id": "5d4cc8708149620a29e73050",
-    "available": true,
+    "tags": [],
+    "_id": "5d4f10f04007c711c0ef8e4a",
+    "available": false,
     "category": "Laptop - Mac",
     "condition": "new",
     "name": "MacBook Pro 13",
-    "sn": "1234567890",
-    "createdAt": "2019-08-09T01:12:16.246Z",
-    "updatedAt": "2019-08-09T01:12:16.246Z",
+    "sn": "111111111",
+    "createdAt": "2019-08-10T18:46:08.357Z",
+    "updatedAt": "2019-08-11T20:57:34.382Z",
     "__v": 0
 }
 ```
@@ -85,8 +83,12 @@ Arguments
   * type: string (id)
   * *required*
   
-```
-GET /api/items/:_id
+```js
+axios.get("/api/items/5d4f10f04007c711c0ef8e4a", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -95,19 +97,19 @@ Response:
 {
     "description": "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
     "tags": [
-            "laptop",
-            "macbook",
-            "apple",
-            "new"
-        ],
-    "_id": "5d4cc8708149620a29e73050",
+        "laptop",
+        "macbook",
+        "apple",
+        "new"
+    ],
+    "_id": "5d4f10f04007c711c0ef8e4a",
     "available": true,
     "category": "Laptop - Mac",
     "condition": "new",
     "name": "MacBook Pro 13",
-    "sn": "1234567890",
-    "createdAt": "2019-08-09T01:12:16.246Z",
-    "updatedAt": "2019-08-09T01:12:16.246Z",
+    "sn": "111111111",
+    "createdAt": "2019-08-10T18:46:08.357Z",
+    "updatedAt": "2019-08-10T18:46:08.357Z",
     "__v": 0
 }
 ```
@@ -143,14 +145,12 @@ Arguments
   * type: list
   * *optional*
 
-```
-PATCH /api/items/:_id
-```
-
-```
-{
-	"available": false
-}
+```js
+axios.patch("/api/items/5d4f10f04007c711c0ef8e4a", { available: false }, {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -159,19 +159,19 @@ Response:
 {
     "description": "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
     "tags": [
-            "laptop",
-            "macbook",
-            "apple",
-            "new"
-        ],
-    "_id": "5d4cc8708149620a29e73050",
+        "laptop",
+        "macbook",
+        "apple",
+        "new"
+    ],
+    "_id": "5d4f10f04007c711c0ef8e4a",
     "available": false,
     "category": "Laptop - Mac",
     "condition": "new",
     "name": "MacBook Pro 13",
-    "sn": "1234567890",
-    "createdAt": "2019-08-09T01:12:16.246Z",
-    "updatedAt": "2019-08-10T13:17:13.104Z",
+    "sn": "111111111",
+    "createdAt": "2019-08-10T18:46:08.357Z",
+    "updatedAt": "2019-08-11T21:10:35.052Z",
     "__v": 0
 }
 ```
@@ -184,8 +184,12 @@ Arguments
   * type: string (id)
   * *required*
 
-```
-DELETE /api/items/:_id
+```js
+axios.delete("/api/items/5d4f10f04007c711c0ef8e4a", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -226,8 +230,15 @@ Arguments
   * type: list
   * *optional*
 
-```
-GET /api/items
+```js
+axios.get("/api/items", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    },
+    params: {
+        available: true
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -237,19 +248,19 @@ Response:
     {
         "description": "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
         "tags": [
-                "laptop",
-                "macbook",
-                "apple",
-                "new"
-            ],
-        "_id": "5d4cc8708149620a29e73050",
+            "laptop",
+            "macbook",
+            "apple",
+            "new"
+        ],
+        "_id": "5d4f10f04007c711c0ef8e4a",
         "available": true,
         "category": "Laptop - Mac",
         "condition": "new",
         "name": "MacBook Pro 13",
-        "sn": "1234567890",
-        "createdAt": "2019-08-09T01:12:16.246Z",
-        "updatedAt": "2019-08-09T01:12:16.246Z",
+        "sn": "111111111",
+        "createdAt": "2019-08-10T18:46:08.357Z",
+        "updatedAt": "2019-08-10T18:46:08.357Z",
         "__v": 0
     },
     {...},

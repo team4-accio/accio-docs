@@ -19,15 +19,18 @@ Arguments
   * type: string (hash)
   * *required*
 
-``` 
-POST /login
-```
-
-```
-{
-    "email": "ironman@avengers.com",
-    "password": "password"
-}
+```js
+axios.post("/login",
+    {
+        email: "ironman@avengers.com",
+        password: "password"
+    },
+    {
+        headers: {
+            authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+        }
+    }
+).then(function () {...});
 ```
 
 Response:
@@ -64,10 +67,16 @@ Response:
 ```
 
 ### Log out a user
-  
-```
-DELETE /login
--H x-session-token:99f37640-b4e9-11e9-a660-25ca1b2ae688
+
+```js
+axios.delete("/login",
+    {
+        headers: {
+            authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af",
+            "x-session-token": "99f37640-b4e9-11e9-a660-25ca1b2ae688"
+        }
+    }
+).then(function () {...});
 ```
 
 Response:
@@ -80,9 +89,15 @@ Response:
 
 ### Retrieve a session user
   
-```
-GET /session
--H x-session-token:99f37640-b4e9-11e9-a660-25ca1b2ae688
+```js
+axios.get("/session",
+    {
+        headers: {
+            authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af",
+            "x-session-token": "99f37640-b4e9-11e9-a660-25ca1b2ae688"
+        }
+    }
+).then(function () {...});
 ```
 
 Response:

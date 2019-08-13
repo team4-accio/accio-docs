@@ -33,44 +33,41 @@ Arguments
   * type: string (enum)
   * enums: `admin`, `user`
   * *required*
-* salt
-  * type: string
-  * *required*
-* session
-  * type: string
-  * *optional*
 * status
   * type: string (enum)
   * enums: `active`, `inactive`
   * *required*
 
-``` 
-POST /api/users
-```
-
-```
-{
-	"email": "ironman@avengers.com",
-	"name": "Tony Stark",
-	"password": "password",
-	"passwordConfirm": "password",
-	"role": "user",
-	"status": "active"
-}
+```js
+axios.post("/api/users",
+    {
+        email: "captainamerica@avengers.com",
+        name: "Steve Rogers",
+        password: "password",
+        passwordConfirm: "password",
+        role: "user",
+        status: "active"
+    },
+    {
+        headers: {
+            authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+        }
+    }
+).then(function () {...});
 ```
 
 Response:
 
 ```
 {
-    "_id": "5d435546947f0b7bdc41f451",
+    "_id": "5d4f0ee64007c711c0ef8e49",
     "checkouts": [],
-    "createdAt": "2019-08-01T21:10:30.071Z",
-    "email": "ironman@avengers.com",
-    "name": "Tony Stark",
+    "createdAt": "2019-08-10T18:37:26.656Z",
+    "email": "captainamerica@avengers.com",
+    "name": "Steve Rogers",
     "role": "user",
     "status": "active",
-    "updatedAt": "2019-08-01T21:10:30.071Z"
+    "updatedAt": "2019-08-10T18:37:26.656Z"
 }
 ```
 
@@ -82,8 +79,12 @@ Arguments
   * type: string (id)
   * *required*
   
-```
-GET /api/users/:_id
+```js
+axios.get("/api/users/5d4f0ee64007c711c0ef8e49", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -162,10 +163,12 @@ Arguments
 PATCH /api/users/:_id
 ```
 
-```
-{
-	"status": "inactive"
-}
+```js
+axios.patch("/api/users/5d4f0ee64007c711c0ef8e49", { status: "inactive" }, {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -224,8 +227,12 @@ Arguments
   * type: string (id)
   * *required*
 
-```
-DELETE /api/users/:_id
+```js
+axios.delete("/api/users/5d4f0ee64007c711c0ef8e49", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -260,8 +267,15 @@ Arguments
   * enums: `active`, `inactive`
   * *optional*
 
-```
-GET /api/users
+```js
+axios.get("/api/users", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    },
+    params: {
+        role: "user"
+    }
+}).then(function () {...});
 ```
 
 Response:

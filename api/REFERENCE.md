@@ -28,15 +28,18 @@ Arguments
   * type: string (hash)
   * *required*
 
-``` 
-POST /login
-```
-
-```
-{
-    "email": "ironman@avengers.com",
-    "password": "password"
-}
+```js
+axios.post("/login",
+    {
+        email: "ironman@avengers.com",
+        password: "password"
+    },
+    {
+        headers: {
+            authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+        }
+    }
+).then(function () {...});
 ```
 
 Response:
@@ -73,10 +76,16 @@ Response:
 ```
 
 ### Log out a user
-  
-```
-DELETE /login
--H x-session-token:99f37640-b4e9-11e9-a660-25ca1b2ae688
+
+```js
+axios.delete("/login",
+    {
+        headers: {
+            authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af",
+            "x-session-token": "99f37640-b4e9-11e9-a660-25ca1b2ae688"
+        }
+    }
+).then(function () {...});
 ```
 
 Response:
@@ -89,9 +98,15 @@ Response:
 
 ### Retrieve a session user
   
-```
-GET /session
--H x-session-token:99f37640-b4e9-11e9-a660-25ca1b2ae688
+```js
+axios.get("/session",
+    {
+        headers: {
+            authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af",
+            "x-session-token": "99f37640-b4e9-11e9-a660-25ca1b2ae688"
+        }
+    }
+).then(function () {...});
 ```
 
 Response:
@@ -175,18 +190,21 @@ Arguments
   * type: string (id)
   * *required*
 
-``` 
-POST /api/checkouts
-```
-
-```
-{
-    "items": ["5d422db239f8910d495aee65"],
-    "out": "2019-08-01T00:00:00.000Z",
-    "return": "2019-08-31T00:00:00.000Z",
-    "status": "pending",
-    "user": "5d422915501c450bd4230aac"
-}
+```js
+axios.post("/api/checkouts",
+    {
+        items: ["5d422db239f8910d495aee65"],
+        out: "2019-08-01T00:00:00.000Z",
+        return: "2019-08-31T00:00:00.000Z",
+        status: "pending",
+        user: "5d422915501c450bd4230aac"
+    },
+    {
+        headers: {
+            authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+        }
+    }
+).then(function () {...});
 ```
 
 Response:
@@ -234,8 +252,12 @@ Arguments
   * type: string (id)
   * *required*
   
-```
-GET /api/checkouts/:_id
+```js
+axios.get("/api/checkouts/5d4236831c6f3b11c9783d63", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -299,14 +321,12 @@ Arguments
   * type: string (id)
   * *optional*
 
-```
-PATCH /api/checkouts/:_id
-```
-
-```
-{
-    "status": "approved"
-}
+```js
+axios.patch("/api/checkouts/5d4236831c6f3b11c9783d63", { status: approved }, {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -354,8 +374,12 @@ Arguments
   * type: string (id)
   * *required*
 
-```
-DELETE /api/checkouts/:_id
+```js
+axios.delete("/api/checkouts/5d4236831c6f3b11c9783d63", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -389,8 +413,15 @@ Arguments
   * type: string (id)
   * *optional*
 
-```
-GET /api/checkouts
+```js
+axios.get("/api/checkouts", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    },
+    params: {
+        status: "approved"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -423,10 +454,10 @@ Response:
         "_id": "5d4236831c6f3b11c9783d63",
         "out": "2019-08-01T00:00:00.000Z",
         "return": "2019-08-31T00:00:00.000Z",
-        "status": "pending",
+        "status": "approved",
         "user": "5d422915501c450bd4230aac",
         "createdAt": "2019-08-01T00:46:59.754Z",
-        "updatedAt": "2019-08-01T00:46:59.754Z",
+        "updatedAt": "2019-08-01T00:51:14.817Z",
         "__v": 0
     },
     {...},
@@ -472,20 +503,23 @@ Arguments
   * type: list
   * *optional*
 
-``` 
-POST /api/items
-```
-
-```
-{
-	"available": true,
-	"category": "Laptop - Mac",
-	"condition": "new",
-	"description": "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
-	"name": "MacBook Pro 13",
-	"sn": "123456789",
-	"tags": ["laptop", "macbook", "apple", "new"]
-}
+```js
+axios.post("/api/items",
+    {
+        available: true,
+	    category: "Laptop - Mac",
+	    condition: "new",
+	    description: "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
+	    name: "MacBook Pro 13",
+	    sn: "123456789",
+	    tags: ["laptop", "macbook", "apple", "new"]
+    },
+    {
+        headers: {
+            authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+        }
+    }
+).then(function () {...});
 ```
 
 Response:
@@ -493,20 +527,15 @@ Response:
 ```
 {
     "description": "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
-    "tags": [
-            "laptop",
-            "macbook",
-            "apple",
-            "new"
-        ],
-    "_id": "5d4cc8708149620a29e73050",
-    "available": true,
+    "tags": [],
+    "_id": "5d4f10f04007c711c0ef8e4a",
+    "available": false,
     "category": "Laptop - Mac",
     "condition": "new",
     "name": "MacBook Pro 13",
-    "sn": "1234567890",
-    "createdAt": "2019-08-09T01:12:16.246Z",
-    "updatedAt": "2019-08-09T01:12:16.246Z",
+    "sn": "111111111",
+    "createdAt": "2019-08-10T18:46:08.357Z",
+    "updatedAt": "2019-08-11T20:57:34.382Z",
     "__v": 0
 }
 ```
@@ -519,8 +548,12 @@ Arguments
   * type: string (id)
   * *required*
   
-```
-GET /api/items/:_id
+```js
+axios.get("/api/items/5d4f10f04007c711c0ef8e4a", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -529,19 +562,19 @@ Response:
 {
     "description": "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
     "tags": [
-            "laptop",
-            "macbook",
-            "apple",
-            "new"
-        ],
-    "_id": "5d4cc8708149620a29e73050",
+        "laptop",
+        "macbook",
+        "apple",
+        "new"
+    ],
+    "_id": "5d4f10f04007c711c0ef8e4a",
     "available": true,
     "category": "Laptop - Mac",
     "condition": "new",
     "name": "MacBook Pro 13",
-    "sn": "1234567890",
-    "createdAt": "2019-08-09T01:12:16.246Z",
-    "updatedAt": "2019-08-09T01:12:16.246Z",
+    "sn": "111111111",
+    "createdAt": "2019-08-10T18:46:08.357Z",
+    "updatedAt": "2019-08-10T18:46:08.357Z",
     "__v": 0
 }
 ```
@@ -577,14 +610,12 @@ Arguments
   * type: list
   * *optional*
 
-```
-PATCH /api/items/:_id
-```
-
-```
-{
-	"available": false
-}
+```js
+axios.patch("/api/users/5d4f10f04007c711c0ef8e4a", { available: false }, {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -593,19 +624,19 @@ Response:
 {
     "description": "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
     "tags": [
-            "laptop",
-            "macbook",
-            "apple",
-            "new"
-        ],
-    "_id": "5d4cc8708149620a29e73050",
+        "laptop",
+        "macbook",
+        "apple",
+        "new"
+    ],
+    "_id": "5d4f10f04007c711c0ef8e4a",
     "available": false,
     "category": "Laptop - Mac",
     "condition": "new",
     "name": "MacBook Pro 13",
-    "sn": "1234567890",
-    "createdAt": "2019-08-09T01:12:16.246Z",
-    "updatedAt": "2019-08-10T13:17:13.104Z",
+    "sn": "111111111",
+    "createdAt": "2019-08-10T18:46:08.357Z",
+    "updatedAt": "2019-08-11T21:10:35.052Z",
     "__v": 0
 }
 ```
@@ -618,8 +649,12 @@ Arguments
   * type: string (id)
   * *required*
 
-```
-DELETE /api/items/:_id
+```js
+axios.delete("/api/items/5d4f10f04007c711c0ef8e4a", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -660,8 +695,15 @@ Arguments
   * type: list
   * *optional*
 
-```
-GET /api/items
+```js
+axios.get("/api/items", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    },
+    params: {
+        available: true
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -671,19 +713,19 @@ Response:
     {
         "description": "2019 MacBook Pro 13, i5, 256GB SSD, 8GB RAM",
         "tags": [
-                "laptop",
-                "macbook",
-                "apple",
-                "new"
-            ],
-        "_id": "5d4cc8708149620a29e73050",
+            "laptop",
+            "macbook",
+            "apple",
+            "new"
+        ],
+        "_id": "5d4f10f04007c711c0ef8e4a",
         "available": true,
         "category": "Laptop - Mac",
         "condition": "new",
         "name": "MacBook Pro 13",
-        "sn": "1234567890",
-        "createdAt": "2019-08-09T01:12:16.246Z",
-        "updatedAt": "2019-08-09T01:12:16.246Z",
+        "sn": "111111111",
+        "createdAt": "2019-08-10T18:46:08.357Z",
+        "updatedAt": "2019-08-10T18:46:08.357Z",
         "__v": 0
     },
     {...},
@@ -724,44 +766,41 @@ Arguments
   * type: string (enum)
   * enums: `admin`, `user`
   * *required*
-* salt
-  * type: string
-  * *required*
-* session
-  * type: string
-  * *optional*
 * status
   * type: string (enum)
   * enums: `active`, `inactive`
   * *required*
 
-``` 
-POST /api/users
-```
-
-```
-{
-	"email": "ironman@avengers.com",
-	"name": "Tony Stark",
-	"password": "password",
-	"passwordConfirm": "password",
-	"role": "user",
-	"status": "active"
-}
+```js
+axios.post("/api/users",
+    {
+        email: "captainamerica@avengers.com",
+        name: "Steve Rogers",
+        password: "password",
+        passwordConfirm: "password",
+        role: "user",
+        status: "active"
+    },
+    {
+        headers: {
+            authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+        }
+    }
+).then(function () {...});
 ```
 
 Response:
 
 ```
 {
-    "_id": "5d435546947f0b7bdc41f451",
+    "_id": "5d4f0ee64007c711c0ef8e49",
     "checkouts": [],
-    "createdAt": "2019-08-01T21:10:30.071Z",
-    "email": "ironman@avengers.com",
-    "name": "Tony Stark",
+    "createdAt": "2019-08-10T18:37:26.656Z",
+    "email": "captainamerica@avengers.com",
+    "name": "Steve Rogers",
     "role": "user",
     "status": "active",
-    "updatedAt": "2019-08-01T21:10:30.071Z"
+    "updatedAt": "2019-08-10T18:37:26.656Z"
 }
 ```
 
@@ -773,8 +812,12 @@ Arguments
   * type: string (id)
   * *required*
   
-```
-GET /api/users/:_id
+```js
+axios.get("/api/users/5d4f0ee64007c711c0ef8e49", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -853,10 +896,12 @@ Arguments
 PATCH /api/users/:_id
 ```
 
-```
-{
-	"status": "inactive"
-}
+```js
+axios.patch("/api/users/5d4f0ee64007c711c0ef8e49", { status: "inactive" }, {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -915,8 +960,12 @@ Arguments
   * type: string (id)
   * *required*
 
-```
-DELETE /api/users/:_id
+```js
+axios.delete("/api/users/5d4f0ee64007c711c0ef8e49", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    }
+}).then(function () {...});
 ```
 
 Response:
@@ -951,8 +1000,15 @@ Arguments
   * enums: `active`, `inactive`
   * *optional*
 
-```
-GET /api/users
+```js
+axios.get("/api/users", {
+    headers: {
+        authorization: "86b89440-bb1d-11e9-8a28-0f10265f69af"
+    },
+    params: {
+        role: "user"
+    }
+}).then(function () {...});
 ```
 
 Response:
